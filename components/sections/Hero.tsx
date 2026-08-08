@@ -51,9 +51,6 @@ const ctaVariant: Variants = {
 };
 
 export function Hero() {
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const scrollToProjects = () => {
     document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
@@ -120,10 +117,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <Button variant="primary" size="lg" onClick={scrollToContact}>
-            Let&apos;s talk
-          </Button>
-          <Button variant="secondary" size="lg" onClick={scrollToProjects}>
+          <Button variant="primary" size="lg" onClick={scrollToProjects}>
             See my work
           </Button>
         </motion.div>
