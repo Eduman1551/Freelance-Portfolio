@@ -20,7 +20,6 @@ export const navLinks = [
   { label: "About",      href: "#about"     },
   { label: "Projects",   href: "#projects"  },
   { label: "How I Work", href: "#process"   },
-  { label: "Contact",    href: "#contact"   },
 ] as const;
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
@@ -104,7 +103,7 @@ export const projects: Project[] = [
     imageSrc: "/images/project-home-1.png",
     imageAlt: "Aether Apparel project screenshot",
     href: "https://aether-apparel-frontend.vercel.app/",
-    year: "2025",
+    year: "2026",
     status: "completed",
   },
   {
@@ -115,7 +114,7 @@ export const projects: Project[] = [
     imageSrc: "/images/project-home-2.png",
     imageAlt: "Maple Hearth Cafe project screenshot",
     href: "https://maple-hearth-cafe-project.vercel.app/",
-    year: "2025",
+    year: "2026",
     status: "completed",
   },
 ];
