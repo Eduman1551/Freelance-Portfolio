@@ -51,34 +51,40 @@ export const aboutContent = {
 
 // ─── Skills ───────────────────────────────────────────────────────────────────
 
-export type Skill = { name: string; category: "frontend" | "styling" | "tools" };
+export type Skill = { name: string; category: 'frontend' | 'backend' | 'ai' }
 
 export const skills: Skill[] = [
   // Frontend
-  { name: "React",        category: "frontend" },
-  { name: "Next.js",      category: "frontend" },
-  { name: "TypeScript",   category: "frontend" },
-  { name: "JavaScript",   category: "frontend" },
-  { name: "HTML & CSS",   category: "frontend" },
+  { name: 'HTML5', category: 'frontend' },
+  { name: 'CSS3', category: 'frontend' },
+  { name: 'JavaScript', category: 'frontend' },
+  { name: 'TypeScript', category: 'frontend' },
+  { name: 'Tailwind CSS', category: 'frontend' },
+  { name: 'Next.js', category: 'frontend' },
 
-  // Styling / Animation
-  { name: "Tailwind CSS",    category: "styling"   },
-  { name: "Framer Motion",   category: "styling"   },
-  { name: "GSAP",            category: "styling"   },
-  { name: "Responsive Design", category: "styling" },
+  // Backend & Database
+  { name: 'Node.js', category: 'backend' },
+  { name: 'Express.js', category: 'backend' },
+  { name: 'MongoDB', category: 'backend' },
+  { name: 'PostgreSQL', category: 'backend' },
+  { name: 'MySQL', category: 'backend' },
+  { name: 'Prisma', category: 'backend' },
+  { name: 'Supabase', category: 'backend' },
 
-  // Tools / Deployment
-  { name: "Git & GitHub", category: "tools" },
-  { name: "Vercel",       category: "tools" },
-  { name: "Figma",        category: "tools" },
-  { name: "VS Code",      category: "tools" },
-];
+  // AI / Data / Tools
+  { name: 'Python', category: 'ai' },
+  { name: 'Web Scraping', category: 'ai' },
+  { name: 'Claude', category: 'ai' },
+  { name: 'GPT', category: 'ai' },
+  { name: 'Git', category: 'ai' },
+  { name: 'GitHub', category: 'ai' }
+]
 
 export const skillCategories = {
-  frontend: { label: "Frontend",           color: "primary"   },
-  styling:  { label: "Styling & Motion",   color: "secondary" },
-  tools:    { label: "Tools & Deployment", color: "highlight" },
-} as const;
+  frontend: { label: 'Frontend', color: 'primary' },
+  backend: { label: 'Backend & Database', color: 'secondary' },
+  ai: { label: 'AI, Data & Tools', color: 'highlight' }
+} as const
 
 // ─── Projects ─────────────────────────────────────────────────────────────────
 
