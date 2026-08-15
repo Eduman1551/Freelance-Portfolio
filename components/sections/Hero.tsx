@@ -1,12 +1,7 @@
 "use client";
 
-// components/sections/Hero.tsx
-// Full-viewport hero with kinetic stacked typography (Framer Motion stagger),
-// supporting tagline, two CTA buttons, and a scroll indicator.
-
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, useMotionValue, useSpring } from "framer-motion";
 import { heroLines, heroTagline } from "@/lib/content";
-import { Button } from "@/components/ui/Button";
 
 const colorMap: Record<string, string> = {
   text:      "#F2E6D3",
@@ -50,8 +45,41 @@ const ctaVariant: Variants = {
   },
 };
 
-export function Hero() {
+function MagneticButton({ onClick, children }: { onClick: () => void; children: React.ReactNode }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 200, damping: 20 });
+  const sy = useSpring(y, { stiffness: 200, damping: 20 });
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    x.set((e.clientX - cx) * 0.35);
+    y.set((e.clientY - cy) * 0.35);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.button
+      style={{ x: sx, y: sy }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onClick={onClick}
+      whileTap={{ scale: 0.96 }}
+      className="px-8 py-4 text-lg rounded-xl bg-[#E8834D] text-[#17110C] font-medium font-[Inter] transition-colors duration-200 hover:bg-[#E8B94D] cursor-none"
+      data-cursor-hover
+    >
+      {children}
+    </motion.button>
+  );
+}
+
+export function Hero() {
   const scrollToProjects = () => {
     document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -61,7 +89,6 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center px-6 pt-24 pb-16 overflow-hidden"
     >
-      {/* Subtle background texture */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
@@ -71,7 +98,6 @@ export function Hero() {
       />
 
       <div className="max-w-6xl mx-auto w-full">
-        {/* Kinetic headline */}
         <motion.div
           className="overflow-hidden"
           variants={container}
@@ -100,7 +126,6 @@ export function Hero() {
           ))}
         </motion.div>
 
-        {/* Tagline */}
         <motion.p
           className="mt-8 max-w-xl text-[#93816C] font-[Inter] text-base md:text-lg leading-relaxed"
           variants={supportVariant}
@@ -110,19 +135,15 @@ export function Hero() {
           {heroTagline}
         </motion.p>
 
-        {/* CTA buttons */}
         <motion.div
-          className="mt-10 flex flex-col sm:flex-row gap-4"
+          className="mt-10"
           variants={ctaVariant}
           initial="hidden"
           animate="visible"
         >
-          <Button variant="primary" size="lg" onClick={scrollToProjects}>
-            See my work
-          </Button>
+          <MagneticButton onClick={scrollToProjects}>See my work</MagneticButton>
         </motion.div>
       </div>
-
     </section>
   );
 }

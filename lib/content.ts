@@ -19,6 +19,7 @@ export const siteConfig = {
 export const navLinks = [
   { label: "About",      href: "#about"     },
   { label: "Projects",   href: "#projects"  },
+  { label: "Experience", href: "#experience" },
   { label: "How I Work", href: "#process"   },
 ] as const;
 
@@ -157,6 +158,47 @@ export const processSteps: ProcessStep[] = [
     title: "Launch",
     description:
       "We go live together. I handle the technical setup so you don't have to worry about a thing — and I'm always around after launch.",
+  },
+];
+
+// ─── Experience ───────────────────────────────────────────────────────────────
+
+export type ExperienceEntry = {
+  id: string;
+  title: string;
+  org: string;
+  duration: string;
+  status: "completed" | "ongoing";
+  description: string;
+};
+
+export const experience: ExperienceEntry[] = [
+  {
+    id: "tdc",
+    title: "Full-Stack Development Intern",
+    org: "The Developer Company",
+    duration: "1 month",
+    status: "completed",
+    description:
+      "Full-stack summer internship building and shipping real features across frontend and backend as part of a professional dev team.",
+  },
+  {
+    id: "codebase",
+    title: "Web Dev Lead",
+    org: "Codebase, IIIT Kota",
+    duration: "Ongoing",
+    status: "ongoing",
+    description:
+      "Leading web development initiatives for the club — building projects, running workshops, and mentoring junior members.",
+  },
+  {
+    id: "gfg",
+    title: "Web Dev Lead",
+    org: "GFG Campus Body, IIIT Kota",
+    duration: "Ongoing",
+    status: "ongoing",
+    description:
+      "Leading web development for the GeeksforGeeks campus chapter — building club projects and representing the community online.",
   },
 ];
 
